@@ -1,7 +1,5 @@
 package com.wordpress.priyankvex.numberhelper;
 
-import android.database.DatabaseErrorHandler;
-
 import java.util.HashMap;
 
 /**
