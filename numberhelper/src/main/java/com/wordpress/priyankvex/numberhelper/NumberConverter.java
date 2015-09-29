@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class NumberConverter {
 
-    double rawNumber;
+    public double rawNumber;
 
     /**
      * Options for {@link NumberToCurrencyConverter}.

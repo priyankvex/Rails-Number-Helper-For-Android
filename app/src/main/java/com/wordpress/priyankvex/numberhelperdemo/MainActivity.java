@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.wordpress.priyankvex.numberhelper.Config;
 import com.wordpress.priyankvex.numberhelper.NumberToCurrencyConverter;
-import com.wordpress.priyankvex.numberhelper.NumberToCurrencyConverterBuilder;
+import com.wordpress.priyankvex.numberhelper.builders.NumberToCurrencyConverterBuilder;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Building NumberToCurrencyConverter class instance using builder
         NumberToCurrencyConverterBuilder builder = new NumberToCurrencyConverterBuilder(23);
-        builder.setUnit(null);
+        builder.setUnit("$");
         builder.setDelimiter(".");
         NumberToCurrencyConverter numberToCurrencyConverter = builder.build();
 

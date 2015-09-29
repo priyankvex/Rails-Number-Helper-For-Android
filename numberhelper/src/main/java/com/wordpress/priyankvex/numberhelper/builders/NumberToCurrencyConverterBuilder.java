@@ -1,4 +1,7 @@
-package com.wordpress.priyankvex.numberhelper;
+package com.wordpress.priyankvex.numberhelper.builders;
+
+import com.wordpress.priyankvex.numberhelper.NumberConverter;
+import com.wordpress.priyankvex.numberhelper.NumberToCurrencyConverter;
 
 import java.util.HashMap;
 
@@ -6,9 +9,10 @@ import java.util.HashMap;
  * Created by Priyank(@priyankvex) on 27/9/15.
  * Builder for {@link NumberToCurrencyConverter}
  */
-public class NumberToCurrencyConverterBuilder extends NumberConverter{
+public class NumberToCurrencyConverterBuilder{
 
     private HashMap<String, String> options;
+    private double rawNumber;
 
     public NumberToCurrencyConverterBuilder(double rawNumber){
         // Using a copy of default options.

@@ -16,7 +16,6 @@ import java.util.HashMap;
 public class NumberToCurrencyConverter extends NumberConverter{
 
     private HashMap<String, String> options;
-    private double rawNumber;
 
     public NumberToCurrencyConverter(double rawNumber, HashMap<String, String> options){
         this.options = options;
