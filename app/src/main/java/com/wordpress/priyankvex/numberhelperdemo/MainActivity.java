@@ -2,12 +2,9 @@ package com.wordpress.priyankvex.numberhelperdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
-import com.wordpress.priyankvex.numberhelper.Config;
 import com.wordpress.priyankvex.numberhelper.NumberToCurrencyConverter;
 import com.wordpress.priyankvex.numberhelper.NumberToCurrencyConverterBuilder;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidNumberException;
 
 public class MainActivity extends AppCompatActivity {
 
