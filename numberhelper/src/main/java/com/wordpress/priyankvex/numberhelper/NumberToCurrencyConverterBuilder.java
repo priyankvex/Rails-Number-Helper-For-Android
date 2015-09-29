@@ -6,10 +6,9 @@ import java.util.HashMap;
  * Created by Priyank(@priyankvex) on 27/9/15.
  * Builder for {@link NumberToCurrencyConverter}
  */
-public class NumberToCurrencyConverterBuilder {
+public class NumberToCurrencyConverterBuilder extends NumberConverter{
 
     private HashMap<String, String> options;
-    private double rawNumber;
 
     public NumberToCurrencyConverterBuilder(double rawNumber){
         // Using a copy of default options.

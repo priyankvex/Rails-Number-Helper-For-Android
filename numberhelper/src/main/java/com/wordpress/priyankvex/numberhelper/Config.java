@@ -7,4 +7,5 @@ package com.wordpress.priyankvex.numberhelper;
 public class Config {
 
     public static final String TAG = "numberHelper";
+    public static final String NUMERIC_REGEX = "\\d+";
 }
