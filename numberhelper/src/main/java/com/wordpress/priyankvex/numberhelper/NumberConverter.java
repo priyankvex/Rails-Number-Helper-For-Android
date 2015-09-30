@@ -4,8 +4,11 @@ import android.util.Log;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * Created by Priyank(@priyankvex) on 27/9/15.
@@ -69,6 +72,12 @@ public class NumberConverter {
             return false;
         }
         return true;
+    }
+
+    boolean isCountryCodeValid(String countryCode){
+        Set<String> ISO_COUNTRIES = new HashSet<>
+                (Arrays.asList(Locale.getISOCountries()));
+        return ISO_COUNTRIES.contains(countryCode);
     }
 
     /**

@@ -2,10 +2,7 @@ package com.wordpress.priyankvex.numberhelper;
 
 import android.util.Log;
 
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidUnitException;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidCountryCodeException;
 
 import java.util.HashMap;
 
@@ -23,10 +20,13 @@ public class NumberToPhoneConverter extends NumberConverter{
         Log.d(Config.TAG, rawNumber + "");
     }
 
-    public String convert() {
+    public String convert() throws InvalidCountryCodeException {
         // Get the options
         String countryCode = options.get(NumberConverter.KEY_COUNTRY_CODE);
         // Validate options
+        if (!isCountryCodeValid(countryCode)){
+            throw new InvalidCountryCodeException();
+        }
         // Options are valid. Start the converting process.
         return resultNumber;
     }
