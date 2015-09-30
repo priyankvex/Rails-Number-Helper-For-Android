@@ -5,10 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.wordpress.priyankvex.numberhelper.Config;
-import com.wordpress.priyankvex.numberhelper.NumberToRoundedConverter;
-import com.wordpress.priyankvex.numberhelper.builders.NumberToRoundedConverterBuilder;
+import com.wordpress.priyankvex.numberhelper.NumberToDelimitedConverter;
+import com.wordpress.priyankvex.numberhelper.builders.NumberToDelimitedConverterBuilder;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,16 +18,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Building NumberToCurrencyConverter class instance using builder
-        NumberToRoundedConverterBuilder builder = new NumberToRoundedConverterBuilder(23434.9454);
+        NumberToDelimitedConverterBuilder builder = new NumberToDelimitedConverterBuilder(23434.9454);
         builder.setDelimiter(",");
-        builder.setPrecision("2");
-        NumberToRoundedConverter converter = builder.build();
-
+        NumberToDelimitedConverter converter = builder.build();
         try {
             String result = converter.convert();
             Log.d(Config.TAG, result);
-        } catch (InvalidSeparatorException
-                | InvalidPrecisionException | InvalidDelimiterException e) {
+        } catch (InvalidSeparatorException | InvalidDelimiterException e) {
             e.printStackTrace();
         }
     }
