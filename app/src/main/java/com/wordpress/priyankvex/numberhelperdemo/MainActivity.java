@@ -5,9 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.wordpress.priyankvex.numberhelper.Config;
-import com.wordpress.priyankvex.numberhelper.NumberToDelimitedConverter;
-import com.wordpress.priyankvex.numberhelper.builders.NumberToDelimitedConverterBuilder;
+import com.wordpress.priyankvex.numberhelper.NumberToPercentageConverter;
+import com.wordpress.priyankvex.numberhelper.builders.NumberToPercentageConverterBuilder;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,13 +19,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Building NumberToCurrencyConverter class instance using builder
-        NumberToDelimitedConverterBuilder builder = new NumberToDelimitedConverterBuilder(23434.9454);
+        NumberToPercentageConverterBuilder builder = new NumberToPercentageConverterBuilder(23434.9454);
         builder.setDelimiter(",");
-        NumberToDelimitedConverter converter = builder.build();
+        builder.setPrecision("6");
+        NumberToPercentageConverter converter = builder.build();
         try {
             String result = converter.convert();
             Log.d(Config.TAG, result);
-        } catch (InvalidSeparatorException | InvalidDelimiterException e) {
+        } catch (InvalidSeparatorException | InvalidDelimiterException | InvalidPrecisionException e) {
             e.printStackTrace();
         }
     }
