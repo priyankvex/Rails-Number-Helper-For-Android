@@ -20,9 +20,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Building NumberToCurrencyConverter class instance using builder
-        NumberToCurrencyConverterBuilder builder = new NumberToCurrencyConverterBuilder(23);
+        NumberToCurrencyConverterBuilder builder = new NumberToCurrencyConverterBuilder(23.90);
         builder.setUnit("$");
-        builder.setDelimiter(".");
+        builder.setDelimiter(",");
+        builder.setPrecision("4");
         NumberToCurrencyConverter numberToCurrencyConverter = builder.build();
 
         try {
