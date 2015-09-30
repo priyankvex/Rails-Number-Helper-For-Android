@@ -28,6 +28,7 @@ public class NumberConverter {
     public static final String KEY_SEPARATOR = "separator";
     public static final String KEY_DELIMITER = "delimiter";
     public static final String KEY_PRECISION = "precision";
+    public static final String KEY_COUNTRY_CODE = "countryCode";
 
     static {
         numberToCurrencyOptions = new HashMap<>();
@@ -35,6 +36,7 @@ public class NumberConverter {
         numberToCurrencyOptions.put(KEY_SEPARATOR, ".");
         numberToCurrencyOptions.put(KEY_DELIMITER, ",");
         numberToCurrencyOptions.put(KEY_PRECISION, "2");
+        numberToCurrencyOptions.put(KEY_COUNTRY_CODE, "");
     }
 
     /**
