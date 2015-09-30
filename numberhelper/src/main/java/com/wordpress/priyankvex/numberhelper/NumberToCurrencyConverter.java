@@ -26,7 +26,7 @@ public class NumberToCurrencyConverter extends NumberConverter{
 
         // DEVELOPMENT
         Log.d(Config.TAG, options.toString());
-        Log.d(Config.TAG, rawNumber+"");
+        Log.d(Config.TAG, rawNumber + "");
     }
 
     public String convert() throws InvalidUnitException, InvalidSeparatorException,
@@ -70,11 +70,22 @@ public class NumberToCurrencyConverter extends NumberConverter{
      */
     private void setNumberDelimiter(){
         int precisionValue = Integer.valueOf(options.get(NumberConverter.KEY_PRECISION));
-        String delimiterValue = options.get(NumberConverter.KEY_DELIMITER);
-        String delimitedNumber = NumberFormat.getNumberInstance(Locale.US).format(rawNumber);
-        resultNumber = delimitedNumber.replace(",", delimiterValue);
-        // Setting specified decimal digits.
+        String separator = options.get(KEY_SEPARATOR);
         resultNumber = (String.format("%."+precisionValue+"f", rawNumber));
+        String temp[] = resultNumber.split("\\.");
+        double integerPart = Double.valueOf(temp[0]);
+        String decimalPart = "";
+        if (temp.length == 2){
+            // Only if decimal part is there.
+            decimalPart = separator + (resultNumber.split("\\.")[1]);
+        }
+        String delimiterValue = options.get(NumberConverter.KEY_DELIMITER);
+        String delimitedIntegerPart = NumberFormat.getNumberInstance(Locale.US)
+                .format(integerPart)
+                .replace(",", delimiterValue);
+        Log.d(Config.TAG, "int " + integerPart);
+        Log.d(Config.TAG, "dec " + decimalPart);
+        resultNumber = delimitedIntegerPart + decimalPart;
     }
 
     private void setNumberUnit(){
