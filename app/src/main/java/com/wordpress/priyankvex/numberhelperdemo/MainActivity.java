@@ -5,12 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.wordpress.priyankvex.numberhelper.Config;
-import com.wordpress.priyankvex.numberhelper.NumberToCurrencyConverter;
-import com.wordpress.priyankvex.numberhelper.builders.NumberToCurrencyConverterBuilder;
+import com.wordpress.priyankvex.numberhelper.NumberToRoundedConverter;
+import com.wordpress.priyankvex.numberhelper.builders.NumberToRoundedConverterBuilder;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidUnitException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,16 +19,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Building NumberToCurrencyConverter class instance using builder
-        NumberToCurrencyConverterBuilder builder = new NumberToCurrencyConverterBuilder(23343433434.946);
-        builder.setUnit("$");
+        NumberToRoundedConverterBuilder builder = new NumberToRoundedConverterBuilder(23434.9454);
         builder.setDelimiter(",");
         builder.setPrecision("2");
-        NumberToCurrencyConverter numberToCurrencyConverter = builder.build();
+        NumberToRoundedConverter converter = builder.build();
 
         try {
-            String result = numberToCurrencyConverter.convert();
+            String result = converter.convert();
             Log.d(Config.TAG, result);
-        } catch (InvalidUnitException | InvalidSeparatorException
+        } catch (InvalidSeparatorException
                 | InvalidPrecisionException | InvalidDelimiterException e) {
             e.printStackTrace();
         }

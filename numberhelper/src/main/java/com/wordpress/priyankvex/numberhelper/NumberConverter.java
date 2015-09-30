@@ -1,6 +1,11 @@
 package com.wordpress.priyankvex.numberhelper;
 
+import android.util.Log;
+
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * Created by Priyank(@priyankvex) on 27/9/15.
@@ -11,6 +16,7 @@ public class NumberConverter {
 
     public double rawNumber;
     String resultNumber;
+    HashMap<String, String> options;
 
     /**
      * Options for {@link NumberToCurrencyConverter}.
@@ -61,5 +67,37 @@ public class NumberConverter {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Sets number precised to specified number of decimal points.
+     */
+    void setNumberPrecision(){
+        int precisionValue = Integer.valueOf(options.get(NumberConverter.KEY_PRECISION));
+        rawNumber = new BigDecimal(rawNumber)
+                .setScale(precisionValue, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
+    /**
+     * Sets number as String with delimiter for thousands.
+     */
+    void setNumberDelimiter(){
+        int precisionValue = Integer.valueOf(options.get(NumberConverter.KEY_PRECISION));
+        String separator = options.get(KEY_SEPARATOR);
+        resultNumber = (String.format("%."+precisionValue+"f", rawNumber));
+        String temp[] = resultNumber.split("\\.");
+        double integerPart = Double.valueOf(temp[0]);
+        String decimalPart = "";
+        if (temp.length == 2){
+            // Only if decimal part is there.
+            decimalPart = separator + (resultNumber.split("\\.")[1]);
+        }
+        String delimiterValue = options.get(NumberConverter.KEY_DELIMITER);
+        String delimitedIntegerPart = NumberFormat.getNumberInstance(Locale.US)
+                .format(integerPart)
+                .replace(",", delimiterValue);
+        Log.d(Config.TAG, "int " + integerPart);
+        Log.d(Config.TAG, "dec " + decimalPart);
+        resultNumber = delimitedIntegerPart + decimalPart;
     }
 }
