@@ -2,13 +2,12 @@ package com.wordpress.priyankvex.numberhelperdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
-import com.wordpress.priyankvex.numberhelper.Config;
-import com.wordpress.priyankvex.numberhelper.NumberToPhoneConverter;
-import com.wordpress.priyankvex.numberhelper.builders.NumberToPhoneConverterBuilder;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidCountryCodeException;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPhoneNumberException;
+import com.wordpress.priyankvex.numberhelper.NumberToHumanConverter;
+import com.wordpress.priyankvex.numberhelper.builders.NumberToHumanConverterBuilder;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,15 +17,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Building NumberToCurrencyConverter class instance using builder
-        NumberToPhoneConverterBuilder builder = new NumberToPhoneConverterBuilder("9685587861");
-        builder.setCountryCode("91");
-        NumberToPhoneConverter converter = builder.build();
+        NumberToHumanConverterBuilder builder = new NumberToHumanConverterBuilder(0.0002323232);
+        NumberToHumanConverter converter = builder.build();
         try {
             String result = converter.convert();
-            Log.d(Config.TAG, result);
-        } catch (InvalidCountryCodeException | InvalidPhoneNumberException e) {
+            //Log.d(Config.TAG, result);
+        } catch (InvalidSeparatorException | InvalidPrecisionException | InvalidDelimiterException e) {
             e.printStackTrace();
-            Log.d(Config.TAG, e.getMessage());
         }
     }
 
