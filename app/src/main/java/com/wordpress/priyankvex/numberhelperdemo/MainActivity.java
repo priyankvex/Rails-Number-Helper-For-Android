@@ -5,11 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.wordpress.priyankvex.numberhelper.Config;
-import com.wordpress.priyankvex.numberhelper.NumberToPercentageConverter;
-import com.wordpress.priyankvex.numberhelper.builders.NumberToPercentageConverterBuilder;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
-import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
+import com.wordpress.priyankvex.numberhelper.NumberToPhoneConverter;
+import com.wordpress.priyankvex.numberhelper.builders.NumberToPhoneConverterBuilder;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidCountryCodeException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,14 +17,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Building NumberToCurrencyConverter class instance using builder
-        NumberToPercentageConverterBuilder builder = new NumberToPercentageConverterBuilder(23434.9454);
-        builder.setDelimiter(",");
-        builder.setPrecision("6");
-        NumberToPercentageConverter converter = builder.build();
+        NumberToPhoneConverterBuilder builder = new NumberToPhoneConverterBuilder(9685587861l);
+        NumberToPhoneConverter converter = builder.build();
         try {
             String result = converter.convert();
             Log.d(Config.TAG, result);
-        } catch (InvalidSeparatorException | InvalidDelimiterException | InvalidPrecisionException e) {
+        } catch (InvalidCountryCodeException e) {
             e.printStackTrace();
         }
     }

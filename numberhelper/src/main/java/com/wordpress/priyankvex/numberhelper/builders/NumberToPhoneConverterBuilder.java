@@ -3,6 +3,7 @@ package com.wordpress.priyankvex.numberhelper.builders;
 import com.wordpress.priyankvex.numberhelper.NumberConverter;
 import com.wordpress.priyankvex.numberhelper.NumberToCurrencyConverter;
 import com.wordpress.priyankvex.numberhelper.NumberToPercentageConverter;
+import com.wordpress.priyankvex.numberhelper.NumberToPhoneConverter;
 
 import java.util.HashMap;
 
@@ -32,7 +33,8 @@ public class NumberToPhoneConverterBuilder {
      * Returns instance of {@link NumberToCurrencyConverter}
      * @return instance of NumberToCurrencyConverter
      */
-    public NumberToPercentageConverter build(){
-        return new NumberToPercentageConverter(rawNumber, options);
+    public NumberToPhoneConverter build(){
+        return new NumberToPhoneConverter(rawNumber, options);
     }
+
 }
