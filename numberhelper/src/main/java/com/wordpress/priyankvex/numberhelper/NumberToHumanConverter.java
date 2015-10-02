@@ -48,7 +48,7 @@ public class NumberToHumanConverter extends NumberConverter{
     }
 
     private void convertNumberToHuman(){
-        double rawExponent = Math.log10(rawNumber);
+        double rawExponent = Math.log10(Math.abs(rawNumber));
         if (rawExponent < 0){
             // Number was less than 1
             int exponent = getExponentForNegativeExpo(rawExponent);

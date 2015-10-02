@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Building NumberToCurrencyConverter class instance using builder
-        NumberToHumanConverterBuilder builder = new NumberToHumanConverterBuilder(0.0002323232);
+        NumberToHumanConverterBuilder builder = new NumberToHumanConverterBuilder(-0.0002323232);
         NumberToHumanConverter converter = builder.build();
         try {
             String result = converter.convert();
