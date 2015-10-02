@@ -6,6 +6,7 @@ import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterExceptio
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -13,9 +14,18 @@ import java.util.HashMap;
  */
 public class NumberToHumanSizeConverter extends NumberConverter {
 
+    ArrayList<String> sizeUnits = new ArrayList<>();
+
     public NumberToHumanSizeConverter(double rawNumber, HashMap<String, String> options){
         this.options = options;
         this.rawNumber = rawNumber;
+
+        // Adding the sizes to sizeUnits
+        sizeUnits.add("Bytes");
+        sizeUnits.add("KB");
+        sizeUnits.add("MB");
+        sizeUnits.add("GB");
+        sizeUnits.add("TB");
 
         // DEVELOPMENT
         Log.d(Config.TAG, options.toString());
@@ -46,7 +56,16 @@ public class NumberToHumanSizeConverter extends NumberConverter {
     }
 
     private void convertNumberToHumanSize(){
-
+        int i;
+        for (i = 0; i < 4; i++){
+            if (rawNumber < 1024){
+                break;
+            }
+            rawNumber = rawNumber / 1024;
+        }
+        String humanUnit = sizeUnits.get(i);
+        setNumberPrecision();
+        resultNumber = rawNumber + " " + humanUnit;
     }
 
 }
