@@ -8,6 +8,7 @@ import com.wordpress.priyankvex.numberhelper.Config;
 import com.wordpress.priyankvex.numberhelper.NumberToPhoneConverter;
 import com.wordpress.priyankvex.numberhelper.builders.NumberToPhoneConverterBuilder;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidCountryCodeException;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPhoneNumberException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,13 +18,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Building NumberToCurrencyConverter class instance using builder
-        NumberToPhoneConverterBuilder builder = new NumberToPhoneConverterBuilder(9685587861l);
+        NumberToPhoneConverterBuilder builder = new NumberToPhoneConverterBuilder("9685587861");
         NumberToPhoneConverter converter = builder.build();
         try {
             String result = converter.convert();
             Log.d(Config.TAG, result);
-        } catch (InvalidCountryCodeException e) {
+        } catch (InvalidCountryCodeException | InvalidPhoneNumberException e) {
             e.printStackTrace();
+            Log.d(Config.TAG, e.getMessage());
         }
     }
 

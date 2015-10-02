@@ -13,9 +13,9 @@ import java.util.HashMap;
 public class NumberToPhoneConverterBuilder {
 
     private HashMap<String, String> options;
-    private double rawNumber;
+    private String rawNumber;
 
-    public NumberToPhoneConverterBuilder(double rawNumber){
+    public NumberToPhoneConverterBuilder(String rawNumber){
         // Using a copy of default options.
         this.options = NumberConverter.numberToCurrencyOptions;
         this.rawNumber = rawNumber;

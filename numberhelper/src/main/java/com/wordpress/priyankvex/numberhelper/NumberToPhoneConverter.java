@@ -3,6 +3,7 @@ package com.wordpress.priyankvex.numberhelper;
 import android.util.Log;
 
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidCountryCodeException;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPhoneNumberException;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -12,7 +13,9 @@ import java.util.HashMap;
  */
 public class NumberToPhoneConverter extends NumberConverter{
 
-    public NumberToPhoneConverter(double rawNumber, HashMap<String, String> options){
+    private String rawNumber;
+
+    public NumberToPhoneConverter(String rawNumber, HashMap<String, String> options){
         this.options = options;
         this.rawNumber = rawNumber;
 
@@ -21,11 +24,12 @@ public class NumberToPhoneConverter extends NumberConverter{
         Log.d(Config.TAG, rawNumber + "");
     }
 
-    public String convert() throws InvalidCountryCodeException {
+    public String convert() throws InvalidCountryCodeException, InvalidPhoneNumberException {
         // Get the options
         String countryCode = options.get(NumberConverter.KEY_COUNTRY_CODE);
         // Validate options
         if (!isPhoneNumberValid()){
+            throw new InvalidPhoneNumberException();
         }
         if (!isCountryCodeValid(countryCode)){
             throw new InvalidCountryCodeException();
@@ -38,14 +42,12 @@ public class NumberToPhoneConverter extends NumberConverter{
     private void setPhoneNumber(){
         //get a 12 digits String, filling with left '0' (on the prefix)
         String countryCode = options.get(NumberConverter.KEY_COUNTRY_CODE);
-        DecimalFormat phoneDecimalFmt = new DecimalFormat("0000000000");
-        String phoneRawString= phoneDecimalFmt.format(rawNumber);
 
         java.text.MessageFormat phoneMsgFmt = new java.text.MessageFormat("({0})-{1}-{2}");
         // Grouping of 3-3-4
-        String[] phoneNumArr={phoneRawString.substring(0, 3),
-                phoneRawString.substring(3,6),
-                phoneRawString.substring(6)};
+        String[] phoneNumArr={rawNumber.substring(0, 3),
+                rawNumber.substring(3,6),
+                rawNumber.substring(6)};
 
         resultNumber = phoneMsgFmt.format(phoneNumArr);
 
@@ -56,11 +58,6 @@ public class NumberToPhoneConverter extends NumberConverter{
     }
 
     private boolean isPhoneNumberValid(){
-        String numberString = String.valueOf(rawNumber);
-        Log.d(Config.TAG, "Phone number string : " + numberString);
-        if (numberString.length() != 10){
-            return false;
-        }
-        return true;
+        return rawNumber.length() == 10 && rawNumber != null;
     }
 }
