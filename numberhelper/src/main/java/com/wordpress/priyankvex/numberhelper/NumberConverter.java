@@ -75,9 +75,8 @@ public class NumberConverter {
     }
 
     boolean isCountryCodeValid(String countryCode){
-        Set<String> ISO_COUNTRIES = new HashSet<>
-                (Arrays.asList(Locale.getISOCountries()));
-        return ISO_COUNTRIES.contains(countryCode) || countryCode.equals("");
+        return countryCode.length() == 3 || countryCode.length() == 2
+                || countryCode.contains("-");
     }
 
     /**

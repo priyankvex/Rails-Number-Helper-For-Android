@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Building NumberToCurrencyConverter class instance using builder
         NumberToPhoneConverterBuilder builder = new NumberToPhoneConverterBuilder("9685587861");
+        builder.setCountryCode("91");
         NumberToPhoneConverter converter = builder.build();
         try {
             String result = converter.convert();

@@ -21,7 +21,6 @@ public class NumberToPhoneConverter extends NumberConverter{
 
         // DEVELOPMENT
         Log.d(Config.TAG, options.toString());
-        Log.d(Config.TAG, rawNumber + "");
     }
 
     public String convert() throws InvalidCountryCodeException, InvalidPhoneNumberException {
