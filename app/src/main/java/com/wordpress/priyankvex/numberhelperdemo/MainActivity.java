@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.wordpress.priyankvex.numberhelper.NumberToHumanSizeConverter;
 import com.wordpress.priyankvex.numberhelper.builders.NumberToHumanSizeConverterBuilder;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidNumberException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
 
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             String result = converter.convert();
             //Log.d(Config.TAG, result);
-        } catch (InvalidSeparatorException | InvalidPrecisionException | InvalidDelimiterException e) {
+        } catch (InvalidSeparatorException | InvalidPrecisionException | InvalidDelimiterException | InvalidNumberException e) {
             e.printStackTrace();
         }
     }

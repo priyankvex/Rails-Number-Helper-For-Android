@@ -3,6 +3,7 @@ package com.wordpress.priyankvex.numberhelper;
 import android.util.Log;
 
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
+import com.wordpress.priyankvex.numberhelper.exceptions.InvalidNumberException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
 
@@ -31,13 +32,17 @@ public class NumberToHumanSizeConverter extends NumberConverter {
         Log.d(Config.TAG, options.toString());
     }
 
-    public String convert() throws InvalidSeparatorException, InvalidDelimiterException, InvalidPrecisionException {
+    public String convert() throws InvalidSeparatorException, InvalidDelimiterException
+            , InvalidPrecisionException, InvalidNumberException {
         // Get the options
         String separator = options.get(NumberConverter.KEY_SEPARATOR);
         String delimiter = options.get(NumberConverter.KEY_DELIMITER);
         String precision = options.get(NumberConverter.KEY_PRECISION);
 
         // Validate options
+        if (!isNumberOfBytesValid()){
+            throw new InvalidNumberException();
+        }
         if (!isSeparatorValid(separator)){
             throw new InvalidSeparatorException();
         }
@@ -66,6 +71,13 @@ public class NumberToHumanSizeConverter extends NumberConverter {
         String humanUnit = sizeUnits.get(i);
         setNumberPrecision();
         resultNumber = rawNumber + " " + humanUnit;
+    }
+
+    private boolean isNumberOfBytesValid(){
+        if (rawNumber < 0){
+            return false;
+        }
+        return true;
     }
 
 }
