@@ -1,11 +1,8 @@
 package com.wordpress.priyankvex.numberhelper;
 
-import android.util.Log;
-
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidCountryCodeException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPhoneNumberException;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
 
 /**
@@ -18,9 +15,6 @@ public class NumberToPhoneConverter extends NumberConverter{
     public NumberToPhoneConverter(String rawNumber, HashMap<String, String> options){
         this.options = options;
         this.rawNumber = rawNumber;
-
-        // DEVELOPMENT
-        Log.d(Config.TAG, options.toString());
     }
 
     public String convert() throws InvalidCountryCodeException, InvalidPhoneNumberException {

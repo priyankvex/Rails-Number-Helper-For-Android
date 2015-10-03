@@ -18,9 +18,6 @@ public class NumberToHumanConverter extends NumberConverter{
     public NumberToHumanConverter(double rawNumber, HashMap<String, String> options){
         this.options = options;
         this.rawNumber = rawNumber;
-
-        // DEVELOPMENT
-        Log.d(Config.TAG, options.toString());
     }
 
     public String convert() throws InvalidSeparatorException, InvalidDelimiterException, InvalidPrecisionException {

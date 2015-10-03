@@ -1,7 +1,5 @@
 package com.wordpress.priyankvex.numberhelper;
 
-import android.util.Log;
-
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidNumberException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
@@ -28,8 +26,6 @@ public class NumberToHumanSizeConverter extends NumberConverter {
         sizeUnits.add("GB");
         sizeUnits.add("TB");
 
-        // DEVELOPMENT
-        Log.d(Config.TAG, options.toString());
     }
 
     public String convert() throws InvalidSeparatorException, InvalidDelimiterException

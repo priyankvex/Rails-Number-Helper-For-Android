@@ -1,14 +1,9 @@
 package com.wordpress.priyankvex.numberhelper;
 
-import android.util.Log;
-
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Locale;
-import java.util.Set;
 
 /**
  * Created by Priyank(@priyankvex) on 27/9/15.
@@ -106,8 +101,6 @@ public class NumberConverter {
         String delimitedIntegerPart = NumberFormat.getNumberInstance(Locale.US)
                 .format(integerPart)
                 .replace(",", delimiterValue);
-        Log.d(Config.TAG, "int " + integerPart);
-        Log.d(Config.TAG, "dec " + decimalPart);
         resultNumber = delimitedIntegerPart + decimalPart;
     }
 }
