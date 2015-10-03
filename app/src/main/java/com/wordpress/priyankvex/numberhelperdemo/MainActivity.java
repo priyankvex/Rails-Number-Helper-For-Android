@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         NumberToCurrencyConverter converter = builder.build();
         try {
             String currency = converter.convert();
+            // OUTPUT : $132,456.000
             Log.d(Config.TAG, currency);
         } catch (InvalidUnitException | InvalidSeparatorException
                 | InvalidPrecisionException | InvalidDelimiterException e) {
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         NumberToHumanConverter converter2 = builder2.build();
         try {
             String humanNumber = converter2.convert();
+            // OUTPUT : 123.456 Thousands
             Log.d(Config.TAG, humanNumber);
         } catch (InvalidSeparatorException | InvalidDelimiterException
                 | InvalidPrecisionException e) {
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         NumberToHumanSizeConverter converter3 = builder3.build();
         try {
             String humanSize = converter3.convert();
+            // OUTPUT : 1.071 MB
             Log.d(Config.TAG, humanSize);
         } catch (InvalidSeparatorException | InvalidDelimiterException
                 | InvalidPrecisionException | InvalidNumberException e) {
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         NumberToPercentageConverter converter4 = builder4.build();
         try {
             String percentage = converter4.convert();
+            // OUTPUT : 67.45660%
             Log.d(Config.TAG, percentage);
         } catch (InvalidSeparatorException | InvalidDelimiterException
                 | InvalidPrecisionException e) {
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         NumberToPhoneConverter converter5 = builder5.build();
         try {
             String phoneNumber =  converter5.convert();
+            // OUTPUT : +91-(123)-456-7898
             Log.d(Config.TAG, phoneNumber);
         } catch (InvalidCountryCodeException | InvalidPhoneNumberException e) {
             e.printStackTrace();
