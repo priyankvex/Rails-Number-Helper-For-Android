@@ -1,7 +1,5 @@
 package com.wordpress.priyankvex.numberhelper;
 
-import android.util.Log;
-
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidDelimiterException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidPrecisionException;
 import com.wordpress.priyankvex.numberhelper.exceptions.InvalidSeparatorException;
@@ -18,10 +16,6 @@ public class NumberToCurrencyConverter extends NumberConverter{
     public NumberToCurrencyConverter(double rawNumber, HashMap<String, String> options){
         this.options = options;
         this.rawNumber = rawNumber;
-
-        // DEVELOPMENT
-        Log.d(Config.TAG, options.toString());
-        Log.d(Config.TAG, rawNumber + "");
     }
 
     public String convert() throws InvalidUnitException, InvalidSeparatorException,
